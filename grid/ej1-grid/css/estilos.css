@@ -1,0 +1,23 @@
+*{
+    margin: o;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 16px;
+}
+mi_container{
+    width: 90%;
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+grid_containes{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    overflow: hidden;
+    
+}
