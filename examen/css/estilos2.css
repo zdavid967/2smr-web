@@ -1,0 +1,260 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: #1a1a1a; 
+    color: #f0f0f0; 
+    line-height: 1.6;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    border-bottom: 3px solid #00ff88; 
+    padding: 20px 40px; 
+}
+
+.logo-container h1 {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.menu-principal ul {
+    display: flex;
+    list-style-type: none; 
+    gap: 20px; 
+}
+
+.menu-principal a {
+    text-decoration: none; 
+    color: #fff; 
+    font-weight: bold; 
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-principal a:hover {
+    color: #00ff88; 
+}
+
+
+.seccion-promocional {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252525;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 5px;
+}
+
+.texto-promocional {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.texto-promocional h2 {
+    color: #00ff88;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.texto-promocional p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.formulario-login {
+    width: 300px;
+    border: 2px solid #00ff88;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.formulario-login h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.campo-formulario {
+    margin-bottom: 15px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo-formulario input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.boton-entrar {
+    width: 100%;
+    padding: 12px;
+    background-color: #00ff88;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-entrar:hover {
+    background-color: #00cc6a;
+}
+
+
+.productos-destacados {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.productos-destacados h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #666;
+    font-size: 2rem;
+}
+
+.galeria-productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+}
+
+
+.tarjeta-producto {
+    border: 1px solid #666;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #333;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px); 
+    border-color: #00ff88;
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-producto h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.precio {
+    font-size: 1.2rem;
+    color: #00ff88;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.boton-comprar {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #00ff88;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.boton-comprar:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+footer {
+    background-color: #000;
+    height: 80px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contenido-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.enlace-arriba {
+    color: #00ff88;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.enlace-arriba:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .seccion-promocional {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .texto-promocional {
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .galeria-productos {
+        grid-template-columns: 1fr; 
+    }
+    
+    header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .menu-principal ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
