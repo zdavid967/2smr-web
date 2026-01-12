@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POZIS - Ropa de Diseño Exclusivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #219653;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        /* Video de fondo */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.9;
+        }
+        
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.9));
+            z-index: -1;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-top {
+            background-color: #111;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-top a {
+            transition: color 0.3s;
+        }
+        
+        .header-top a:hover {
+            color: #27ae60;
+        }
+        
+        .header-main {
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 42px;
+            font-weight: 800;
+            color: #111;
+            letter-spacing: -2px;
+            position: relative;
+        }
+        
+        .logo span {
+            color: #27ae60;
+            position: relative;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            top: -5px;
+            right: -10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+        }
+        
+        .nav-menu a {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: #27ae60;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: #27ae60;
+        }
+        
+        .header-icons {
+            display: flex;
+        }
+        
+        .header-icons a {
+            margin-left: 22px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .header-icons a:hover {
+            color: #27ae60;
+        }
+        
+        /* Hero Section */
+        .hero {
+            color: #111;
+            text-align: center;
+            padding: 180px 20px 150px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 68px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .hero h1 span {
+            color: #27ae60;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            text-shadow: 0 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Secciones */
+        .section-container {
+            background-color: rgba(255, 255, 255, 0.97);
+            padding: 80px 0;
+            position: relative;
+            margin-bottom: 0;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            text-transform: uppercase;
+            color: #111;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 5px;
+            background-color: #27ae60;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto 50px;
+            line-height: 1.7;
+        }
+        
+        /* Productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-card::before {
+            content: 'POZIS';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #27ae60;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
+        
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-category {
+            color: #27ae60;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        
+        .product-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-price span {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 18px;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #27ae60;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            transition: color 0.3s;
+            color: #ccc;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #27ae60;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 15px;
+            color: #aaa;
+        }
+        
+        .newsletter {
+            background-color: #27ae60;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .newsletter h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 30px 30px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #222;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 52px;
+            }
+            
+            .nav-menu li {
+                margin-left: 25px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+            }
+            
+            .nav-menu li {
+                margin: 0 15px 10px 0;
+            }
+            
+            .hero {
+                padding: 120px 20px 100px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+        
+        /* Estilos adicionales para mejorar contraste verde/negro */
+        .bag-count {
+            background-color: #27ae60;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 5px;
+            position: relative;
+            top: -10px;
+        }
+        
+        .header-icons {
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video de fondo -->
+    <video autoplay muted loop id="video-background">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-walking-through-a-fashion-store-39809-1080.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div>Envío gratis en pedidos superiores a 60€</div>
+                <div>
+                    <a href="#">Seguimiento de pedido</a> |
+                    <a href="#">Asistencia 24/7</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">POZ<span>IS</span></div>
+                    
+                    <ul class="nav-menu">
+                        <li><a href="#" class="active">Inicio</a></li>
+                        <li><a href="#ropa">Ropa</a></li>
+                        <li><a href="#futbol">Camisetas de Fútbol</a></li>
+                        <li><a href="#">Nueva Colección</a></li>
+                        <li><a href="#">Outlet</a></li>
+                        <li><a href="#">Editorial</a></li>
+                    </ul>
+                    
+                    <div class="header-icons">
+                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#"><i class="fas fa-heart"></i></a>
+                        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                        <span class="bag-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Redefine tu <span>estilo</span> con POZIS</h1>
+        <p>Diseño innovador, calidad excepcional y un estilo que desafía lo convencional. Descubre nuestras colecciones exclusivas creadas para quienes buscan destacar.</p>
+        <a href="#ropa" class="btn">Explorar Colección</a>
+    </section>
+
+    <!-- Sección Ropa -->
+    <section id="ropa" class="section-container">
+        <div class="container">
+            <div class="section-title">
+                <h2>Colección Ropa</h2>
+            </div>
+            
+            <p class="section-subtitle">Nuestra línea principal combina comodidad, estilo y durabilidad. Cada prenda está diseñada con atención al detalle y materiales de alta calidad.</p>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1372&q=80" alt="Sudadera POZIS">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Sudaderas</div>
+                        <h3 class="product-name">Sudadera Oversized POZIS Edition</h3>
+                        <div class="product-price">65,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Pantalones POZIS">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pantalones</div>
+                        <h3 class="product-name">Pantalón Cargo Tech POZIS</h3>
+                        <div class="product-price">74,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Chaqueta POZIS">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Chaquetas</div>
+                        <h3 class="product-name">Chaqueta Bomber Limited Edition</h3>
+                        <div class="product-price">89,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Camiseta POZIS">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Camisetas</div>
+                        <h3 class="product-name">Camiseta Essential POZIS Logo</h3>
+                        <div class="product-price"><span>34,99€</span> 27,99€</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">Ver toda la colección</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Camisetas de Fútbol -->
+    <section id="futbol" class="section-container">
+        <div class="container">
+            <div class="section-title">
+                <h2>Colección Fútbol</h2>
+            </div>
+            
+            <p class="section-subtitle">Diseños exclusivos inspirados en la pasión por el fútbol. Tecnología de alto rendimiento con el estilo distintivo de POZIS.</p>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Camiseta POZIS FC">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Edición Limitada</div>
+                        <h3 class="product-name">Camiseta POZIS FC 2023 Local</h3>
+                        <div class="product-price">79,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Camiseta POZIS Away">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Edición Limitada</div>
+                        <h3 class="product-name">Camiseta POZIS FC 2023 Visitante</h3>
+                        <div class="product-price">79,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Camiseta entrenamiento">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Entrenamiento</div>
+                        <h3 class="product-name">Kit Entrenamiento Performance</h3>
+                        <div class="product-price">94,99€</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1579556330446-3cacd0d4c68b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Camiseta retro">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Retro Collection</div>
+                        <h3 class="product-name">Camiseta Vintage 90's POZIS</h3>
+                        <div class="product-price"><span>89,99€</span> 69,99€</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">Ver colección fútbol</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h3>Únete al Club POZIS</h3>
+            <p>Recibe un 15% de descuento en tu primera compra y sé el primero en conocer nuestras nuevas colecciones.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirme</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>POZIS</h3>
+                    <ul>
+                        <li><a href="#">Nuestra historia</a></li>
+                        <li><a href="#">Sostenibilidad</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Tiendas físicas</a></li>
+                        <li><a href="#">Blog POZIS</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li><a href="#">Envíos y entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de tallas</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Colecciones</h3>
+                    <ul>
+                        <li><a href="#ropa">Ropa</a></li>
+                        <li><a href="#futbol">Camisetas de Fútbol</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#">Edición Limitada</a></li>
+                        <li><a href="#">Próximos lanzamientos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Síguenos</h3>
+                    <p>Conecta con la comunidad POZIS</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 POZIS. Todos los derechos reservados. | Diseño exclusivo POZIS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Cambiar clase activa en el menú al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Interacción con productos
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if(!e.target.classList.contains('btn')) {
+                    const productName = this.querySelector('.product-name').textContent;
+                    const productPrice = this.querySelector('.product-price').textContent;
+                    
+                    // Crear modal simple
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.7);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="background-color: white; padding: 30px; border-radius: 12px; max-width: 500px; text-align: center;">
+                            <h3 style="color: #27ae60; margin-bottom: 15px;">¡Producto añadido a tu bolsa!</h3>
+                            <p style="margin-bottom: 20px; font-size: 18px;">${productName}</p>
+                            <p style="font-weight: bold; font-size: 20px; margin-bottom: 25px;">${productPrice}</p>
+                            <div>
+                                <button id="continue-shopping" style="background-color: #f0f0f0; color: #333; border: none; padding: 12px 25px; border-radius: 30px; margin-right: 10px; cursor: pointer;">Seguir comprando</button>
+                                <button id="go-to-cart" style="background-color: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer;">Ver bolsa</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Eventos para los botones del modal
+                    document.getElementById('continue-shopping').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    document.getElementById('go-to-cart').addEventListener('click', function() {
+                        alert('Redirigiendo a la bolsa de compra...');
+                        document.body.removeChild(modal);
+                    });
+                    
+                    // Cerrar modal al hacer clic fuera
+                    modal.addEventListener('click', function(e) {
+                        if(e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Formulario de newsletter
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if(newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                if(email) {
+                    alert(`¡Gracias por suscribirte con ${email}! Te hemos enviado un código de descuento del 15% a tu correo.`);
+                    this.reset();
+                }
+            });
+        }
+        
+        // Control de video para móviles (pausar/reproducir según interacción)
+        const video = document.getElementById('video-background');
+        
+        // Pausar video cuando no está visible para mejorar rendimiento
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, {threshold: 0.5});
+        
+        observer.observe(video);
+        
+        // Contador del carrito interactivo
+        let cartCount = 3;
+        const cartCountElement = document.querySelector('.bag-count');
+        
+        // Simular agregar productos al carrito
+        document.querySelectorAll('.btn').forEach(button => {
+            if(button.textContent.includes('colección')) return;
+            
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+                
+                // Efecto visual en el contador
+                cartCountElement.style.transform = 'scale(1.3)';
+                setTimeout(() => {
+                    cartCountElement.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
